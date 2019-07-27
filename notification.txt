@@ -1,0 +1,14 @@
+We assume an Author object should have  at least: author_id, author_name and author_email;
+We assume a Question object should have at least: question_id, question_title, question_text, question_answers(refer to Answer object), author_id,
+We assume an Answer object should have at least: answer_id, answer_text, answer_numofVotes, author_id, question_id,
+We assume a Comment object should have at least: comment_id, comment_text, comment_author, comment_answer, answer_id, author_id,
+Once a question is created, a new Question object will be created;
+
+For each answer/comment/vote created,  new object of each will be created and saved into database respectively 
+Except here, we disable user to be able to vote his/her answer;
+
+After saving to database, the backend will rely on database to cross reference with the Question object (which contains author_id), filter out the sender_email, 
+and send email notification to all involved participants in the thread;
+
+Before sending email, backend will also check if there exists more than 1 Answer_Object/Comment_Object/Vote_Object, then backend will collect all author's names and put into an array;
+The array will be looped over so that the name can be extracted to be compiled into message template.
