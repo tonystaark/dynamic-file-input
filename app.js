@@ -9,5 +9,5 @@ fs.readdir('./actions', (err, files) => {
     actions[fileName] = require('./actions/' + file)
   });
   // return actions
-  Object.keys(actions).indexOf(args[0]) >= 0 ? actions[args[0]](args) : console.log('incorrect command')
+  Object.keys(actions).indexOf(args[0]) >= 0 ? actions[args[0]](args) : 'incorrect command'
 });
